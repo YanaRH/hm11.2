@@ -1,0 +1,36 @@
+[tool.poetry]
+name = "homework9-1"
+version = "0.1.0"
+description = ""
+authors = ["Bogdan"]
+readme = "README.md"
+packages = [{include = "homework9"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pytest = "^8.3.3"
+
+
+[tool.poetry.group.lint.dependencies]
+flake8 = "^7.1.1"
+black = "^24.8.0"
+isort = "^5.13.2"
+mypy = "^1.11.2"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.mypy]
+strict = true
