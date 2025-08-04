@@ -1,26 +1,13 @@
-from typing import List, Dict, Iterator
+def filter_by_currency(transactions, currency_code):
+    """Фильтрует транзакции по указанной валюте."""
+    return [transaction for transaction in transactions if transaction['operationAmount']['currency']['code'] == currency_code]
 
+def transaction_descriptions(transactions):
+    """Возвращает описания транзакций."""
+    return (transaction['description'] for transaction in transactions)
 
-def filter_by_currency(transactions: List[Dict], currency_code: str) -> Iterator[Dict]:
-    """
-    Генератор, который возвращает транзакции с заданной валютой.
-    """
-    for transaction in transactions:
-        if transaction.get('operationAmount', {}).get('currency', {}).get('code') == currency_code:
-            yield transaction
-
-
-def transaction_descriptions(transactions: List[Dict]) -> Iterator[str]:
-    """
-    Генератор, который возвращает описание каждой транзакции.
-    """
-    for transaction in transactions:
-        yield transaction.get('description', '')
-
-
-def card_number_generator(start: int, end: int) -> Iterator[str]:
-    """
-    Генератор, который выдает номера карт в формате XXXX XXXX XXXX XXXX в заданном диапазоне.
-    """
+def card_number_generator(start, end):
+    """Генерирует номера карт в формате '0000 0000 0000 0000'."""
     for number in range(start, end + 1):
-        yield f"{number:016}".replace(" ", "").rjust(19, '0')
+        # Форматируем номер карты с пробелами
+        yield f"{number:016d}"[:4] + " " + f"{number:016d}"[4:8] + " " + f"{number:016d}"[8:12] + " " + f"{number:016d}"[12:16]

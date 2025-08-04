@@ -81,3 +81,5 @@ def test_card_number_generator():
     # Проверка крайних значений
     card_number = next(card_number_generator(9999999999999999, 9999999999999999))
     assert card_number == "9999 9999 9999 9999"
+
+
