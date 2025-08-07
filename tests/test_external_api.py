@@ -5,6 +5,7 @@ from unittest import mock
 from unittest.mock import patch
 from src.external_api import convert_to_rub
 
+
 @patch("http.client.HTTPSConnection")
 def test_convert_to_rub(mock_https_connection):
     # Настройка мока для соединения
@@ -28,4 +29,5 @@ def test_convert_to_rub(mock_https_connection):
         "/exchangerates_data/convert?from=USD&to=RUB&amount=1",
         headers={"apikey": "test_api_key"}
     )
+
 

@@ -1,6 +1,6 @@
-# src/utils.py
 import json
 from typing import List, Dict
+
 
 def read_json_file(file_path: str) -> List[Dict]:
     """Читает JSON-файл и возвращает список данных о транзакциях."""
@@ -12,3 +12,4 @@ def read_json_file(file_path: str) -> List[Dict]:
             return []
     except (FileNotFoundError, json.JSONDecodeError):
         return []
+

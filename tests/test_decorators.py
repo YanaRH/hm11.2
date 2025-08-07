@@ -39,7 +39,9 @@ def test_file_logging(tmp_path):
     def function_to_log(x, y):
         result = x + y
         with open(log_file, "a") as log_file_handle:  # Изменено имя переменной
-            log_file_handle.write(f"function_to_log called with args=({x}, {y}), result={result}\n")
+            log_file_handle.write(
+                f"function_to_log called with args=({x}, {y}), result={result}\n"
+            )
         return result
 
     # Вызов функции и проверка логирования

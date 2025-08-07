@@ -16,7 +16,6 @@ def log(filename: Optional[str] = None) -> Callable:
         Callable: Обёрнутая функция с логированием.
     """
 
-
     def decorator(func: Callable) -> Callable:
         # Настройка логгера
         logger = logging.getLogger(func.__name__)
@@ -38,9 +37,11 @@ def log(filename: Optional[str] = None) -> Callable:
             except Exception as e:
                 # Логирование ошибки с аргументами
                 logger.error(
-                    f"{func.__name__} error: {type(e).__name__} - {str(e)}. Inputs: args={args}, kwargs={kwargs}")
+                    f"{func.__name__} error: {type(e).__name__} - {str(e)}. Inputs: args={args}, kwargs={kwargs}"
+                )
                 raise
 
         return wrapper
 
     return decorator
+

@@ -1,6 +1,7 @@
 import pytest
 from src.masks import get_mask_card_number, get_mask_account
 
+
 # Parameterized tests for mask_card_number with added exception handling
 @pytest.mark.parametrize("card_number, expected", [
     ("7000792289606361", "7000 79** **** 6361"),
@@ -26,8 +27,6 @@ def test_get_mask_card_number(card_number, expected):
     ("", None),  # Изменено на None, чтобы соответствовать ожиданиям
     ("123", None),  # Это должно вызывать исключение
 ])
-
-
 def test_get_mask_account(account_number, expected):
     if account_number == "123":  # Тест на исключение
         with pytest.raises(ValueError, match="Account number must have at least 4 digits."):
@@ -37,4 +36,5 @@ def test_get_mask_account(account_number, expected):
             get_mask_account(account_number)
     else:
         assert get_mask_account(account_number) == expected
+
 
