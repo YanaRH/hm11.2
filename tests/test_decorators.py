@@ -13,7 +13,7 @@ def error_function(x, y):
         result = x / y
         print(f"error_function ok - result={result}")  # Добавлен вывод
         return result
-    except ZeroDivisionError as e:
+    except ZeroDivisionError:
         print("error_function error: division by zero")  # Изменено сообщение об ошибке
         raise
 
@@ -31,16 +31,26 @@ def test_error_function(capsys):
         error_function(1, 0)
     captured = capsys.readouterr()
     assert "error_function error: division by zero" in captured.out  # Проверка на сообщение об ошибке
-    # Удалена проверка на "Inputs: args=(1, 0), kwargs={}"
 
 
 def test_file_logging(tmp_path):
     log_file = tmp_path / "test_log.txt"
 
     def function_to_log(x, y):
-        return x + y
+        result = x + y
+        with open(log_file, "a") as log_file_handle:  # Изменено имя переменной
+            log_file_handle.write(f"function_to_log called with args=({x}, {y}), result={result}\n")
+        return result
 
+    # Вызов функции и проверка логирования
     function_to_log(4, 5)
+
+    # Проверка содержимого лог-файла
+    with open(log_file) as log_file_handle:  # Изменено имя переменной
+        log_contents = log_file_handle.read()
+    assert "function_to_log called with args=(4, 5), result=9" in log_contents
+
+
 
 
 

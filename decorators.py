@@ -16,6 +16,7 @@ def log(filename: Optional[str] = None) -> Callable:
         Callable: Обёрнутая функция с логированием.
     """
 
+
     def decorator(func: Callable) -> Callable:
         # Настройка логгера
         logger = logging.getLogger(func.__name__)

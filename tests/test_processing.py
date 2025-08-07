@@ -14,9 +14,11 @@ def test_filter_by_state_executed(operations):
     assert len(result) == 2
     assert all(op['state'] == 'EXECUTED' for op in result)
 
+
 def test_sort_by_date_desc(operations):
     result = sort_by_date(operations)
     assert result[0]['id'] == 1  # Latest date first
+
 
 def test_sort_by_date_asc(operations):
     result = sort_by_date(operations, reverse=False)

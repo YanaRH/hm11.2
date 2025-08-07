@@ -12,6 +12,7 @@ def mask_account_card(data: str) -> str:
         else:
             return data  # Если формат не соответствует, возвращаем исходные данные
 
+
 def get_date(date_str: str) -> str:
     # Преобразуем строку даты в нужный формат
     year, month, day = date_str.split("T")[0].split("-")

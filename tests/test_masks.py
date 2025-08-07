@@ -26,6 +26,8 @@ def test_get_mask_card_number(card_number, expected):
     ("", None),  # Изменено на None, чтобы соответствовать ожиданиям
     ("123", None),  # Это должно вызывать исключение
 ])
+
+
 def test_get_mask_account(account_number, expected):
     if account_number == "123":  # Тест на исключение
         with pytest.raises(ValueError, match="Account number must have at least 4 digits."):

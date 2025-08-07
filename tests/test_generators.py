@@ -1,5 +1,6 @@
 import pytest
-from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
+from src.generators import (filter_by_currency,
+                            transaction_descriptions, card_number_generator)
 
 # Пример транзакций
 transactions = [
@@ -50,6 +51,7 @@ transactions = [
     },
 ]
 
+
 def test_filter_by_currency():
     usd_transactions = list(filter_by_currency(transactions, "USD"))
     assert len(usd_transactions) == 2
@@ -60,6 +62,7 @@ def test_filter_by_currency():
     rub_transactions = list(filter_by_currency(transactions, "EUR"))
     assert len(rub_transactions) == 0
 
+
 def test_transaction_descriptions():
     descriptions = list(transaction_descriptions(transactions))
     assert descriptions == [
@@ -67,6 +70,7 @@ def test_transaction_descriptions():
         "Перевод со счета на счет",
         "Перевод со счета на счет"
     ]
+
 
 def test_card_number_generator():
     card_numbers = list(card_number_generator(1, 5))
